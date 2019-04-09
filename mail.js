@@ -1,0 +1,44 @@
+var nodemailer = require('nodemailer');
+const express = require('express')
+const app = express()
+app.use(express.json())
+const port = process.env.PORT || 3000
+
+app.post('/', function (req, res) {
+    console.log(req.body);
+    var sender = req.body.sender;
+    var pass = req.body.pass;
+    var recipient = req.body.recipient;
+    var subject = req.body.subject;
+    var body = req.body.body;
+
+
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: sender,
+            pass: pass
+        }
+    });
+
+    var mailOptions = {
+        from: sender,
+        to: recipient,
+        subject: subject,
+        text: body
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            res.send('Error');
+        } else {
+            res.send('Email to ' + recipient + ' successfully sent!');
+        }
+    });
+
+})
+
+
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
