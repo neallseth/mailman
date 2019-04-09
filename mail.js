@@ -2,7 +2,7 @@ var nodemailer = require('nodemailer');
 const express = require('express')
 const app = express()
 app.use(express.json())
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3010
 
 app.post('/', function (req, res) {
     console.log(req.body);
@@ -41,7 +41,7 @@ app.post('/', function (req, res) {
 
 
 app.get('/', function (req, res) {
-    res.send('In order to send an email, turn off gmail <a href="https://www.google.com/settings/security/lesssecureapps">secure mode</a> and POST a JSON with the following keys: sender, pass, recipient, subject, body.');
+    res.send('<p>In order to send an email, turn off gmail <a href="https://www.google.com/settings/security/lesssecureapps">secure mode</a> and POST a JSON with the following keys: sender, pass, recipient, subject, body.</p>');
 })
 
 
