@@ -40,5 +40,11 @@ app.post('/', function (req, res) {
 })
 
 
+app.get('/', function (req, res) {
+    res.send('In order to send an email, turn off gmail <a href="https://www.google.com/settings/security/lesssecureapps">secure mode</a> and POST a JSON with the following keys: sender, pass, recipient, subject, body.');
+})
+
+
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
