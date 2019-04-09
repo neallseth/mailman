@@ -31,7 +31,7 @@ app.post('/', function (req, res) {
 
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-            res.send('Error');
+            res.send('Error: ' + error);
         } else {
             res.send('Email to ' + recipient + ' successfully sent!');
         }
